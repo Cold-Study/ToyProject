@@ -20,12 +20,10 @@ public class Member {
     private String name;
     private String pwd;
     private double balance;
+    Member[] members = new Member[6];
 
     public Member() {
     }
-
-    Member[] members = new Member[6];
-
 
     public Member(int id, int accountNumber, String name, String pwd, double balance) {
         this.id = id;
@@ -33,30 +31,6 @@ public class Member {
         this.name = name;
         this.pwd = pwd;
         this.balance = balance;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
     }
 
     public double getBalance() {
@@ -79,33 +53,17 @@ public class Member {
                 '}';
     }
 
-    public void signUp(int id) {
-        Scanner sc = new Scanner(System.in);
-        accountNumber = (int) (Math.random() + 1000);
-        System.out.print("이름을 입력해주세요: ");
-        name = sc.nextLine();
-        System.out.print("사용하실 비밀번호를 입력해주세요: ");
-        pwd = sc.nextLine();
-        members[id] = new Member(id, accountNumber, name, pwd, 0);
-        System.out.println("가입된 회원정보는 " + Arrays.toString(members) + " 입니다.");
-        System.out.println("가입된 회원정보는 " + members[id] + " 입니다.");
-    }
-
     public boolean login(boolean login) {
         Scanner sc = new Scanner(System.in);
         System.out.print("계좌번호를 입력해주세요: ");
         accountNumber = sc.nextInt();
 
-//        System.out.println("member account: " + members[3].accountNumber);
-
-//        id = 0;
         for (int i = 0; i < members.length; i++) {
             if (accountNumber == members[i].accountNumber) {
                 id = i;
                 System.out.print("비밀번호를 입력해주세요: ");
                 pwd = sc.next();
-//                System.out.println("member pwd: " + members[id].pwd);
-//                System.out.println("pwd: " + pwd);
+
                 if (Objects.equals(pwd, members[id].pwd)) {         // Memo. pwd == members[id].pwd 는 적용이 안됨
                     login = true;
                     System.out.println("로그인 되었습니다.");
@@ -120,9 +78,8 @@ public class Member {
 
     }
 
-    // 기존 가입 회원
+    // 기존 가입된 회원
     public void memberManager() {
-
         members[0] = new Member(0, 1111, "Grace", "abcd1234", 5320000.0);
         members[1] = new Member(1, 5555, "Julia", "abcd5678", 8320000.0);
         members[2] = new Member(2, 6666, "Tom", "abcd8765", 49920000.0);
@@ -132,8 +89,6 @@ public class Member {
     }
 
     public void deposit() {
-//        Deposit deposit = new Deposit();
-//        deposit.howMuch();
         balance = members[id].balance;
         System.out.print("입금할 금액을 입력해주세요: ");
         Scanner sc = new Scanner(System.in);
@@ -157,7 +112,7 @@ public class Member {
         Scanner sc = new Scanner(System.in);
         double withdraw = sc.nextDouble();
 
-        if (balance >=  withdraw) {
+        if (balance >= withdraw) {
             balance -= withdraw;
             members[id].balance = balance;
             System.out.println("출금 후 잔액은 " + balance + "원 입니다.");
@@ -165,7 +120,6 @@ public class Member {
         } else {
             System.out.println("출금하실 금액을 다시 확인해주세요.");
             withdraw();
-//            System.out.println("재귀");  // Depth 추가됨
         }
     }
 }
