@@ -1,5 +1,6 @@
 package controller;
 
+import repository.MemberRepository;
 import view.TitlePage;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ public class TitleController {
 
     /* 설명. 타이틀 메뉴에서 선택 가능한 숫자 리스트. */
     private static final ArrayList<Integer> NUMBER_OF_TITLE_SELECTION = new ArrayList<>(List.of(1, 2, 9));
+    private final MemberRepository memberRepository = new MemberRepository();
+
     public void selectTitleMenu() {
         TitlePage titlePage = new TitlePage();
         MemberController memberController = new MemberController();
@@ -19,7 +22,7 @@ public class TitleController {
 
                 switch (input) {
                     case 1:     // 회원 페이지로 이동
-                        memberController.selectMemberMenu();
+                        memberController.selectMemberMenu(memberRepository);
                         break;
                     case 2:     // 게시판 페이지로 이동
                         System.out.println("게시판 서비스 구현 위치");

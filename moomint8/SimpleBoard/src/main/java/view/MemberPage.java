@@ -3,8 +3,6 @@ package view;
 import validate.InputException.NotInListRangeException;
 import validate.InputException.NotNumberException;
 import validate.Validate;
-import validate.ValidateInputRange;
-import validate.ValidateInputType;
 
 import java.util.ArrayList;
 import java.util.Scanner;

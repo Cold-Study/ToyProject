@@ -1,5 +1,7 @@
 package controller;
 
+import repository.MemberRepository;
+import service.MemberService;
 import view.MemberPage;
 
 import java.util.ArrayList;
@@ -10,8 +12,9 @@ public class MemberController {
     /* 설명. 회원 메뉴에서 선택 가능한 숫자 리스트. */
     private static final ArrayList<Integer> NUMBER_OF_MEMBER_SELECTION = new ArrayList<>(List.of(1, 2, 3, 4, 9));
 
-    public void selectMemberMenu() {
+    public void selectMemberMenu(MemberRepository memberRepository) {
         MemberPage memberPage = new MemberPage();
+        MemberService memberService = new MemberService();
 
         while (true) {
             try {
@@ -19,7 +22,8 @@ public class MemberController {
 
                 switch (input) {
                     case 1:     // 회원 전체 조회
-                        System.out.println("회원 전체 조회 구현 위치");
+                        System.out.println("\n------ 회원 전체 조회 결과 ------");
+                        memberService.selectAllMembers(memberRepository);
                         break;
                     case 2:     // 회원 가입
                         System.out.println("회원 가입 구현 위치");
