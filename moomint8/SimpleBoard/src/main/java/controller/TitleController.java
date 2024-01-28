@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TitleController {
+    private final MemberRepository memberRepository = new MemberRepository();
 
     /* 설명. 타이틀 메뉴에서 선택 가능한 숫자 리스트. */
-    private static final ArrayList<Integer> NUMBER_OF_TITLE_SELECTION = new ArrayList<>(List.of(1, 2, 9));
-    private final MemberRepository memberRepository = new MemberRepository();
+    private final ArrayList<Integer> NUMBER_OF_TITLE_SELECTION = new ArrayList<>(List.of(1, 2, 9));
+
 
     public void selectTitleMenu() {
         TitlePage titlePage = new TitlePage();

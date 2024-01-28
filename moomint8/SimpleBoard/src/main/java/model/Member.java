@@ -22,8 +22,20 @@ public class Member implements Serializable {
         this.isDeleted = false;
     }
 
+    public int getMemberNo() {
+        return memberNo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String getNick() {
         return nick;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
     @Override

@@ -26,7 +26,8 @@ public class MemberController {
                         memberService.selectAllMembers(memberRepository);
                         break;
                     case 2:     // 회원 가입
-                        System.out.println("회원 가입 구현 위치");
+                        System.out.println("\n------ 회원 가입 ------");
+                        memberService.signUp(memberRepository);
                         break;
                     case 3:     // 회원 정보 변경
                         System.out.println("회원 정보 변경 구현 위치");

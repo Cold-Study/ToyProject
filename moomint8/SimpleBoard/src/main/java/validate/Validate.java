@@ -1,5 +1,6 @@
 package validate;
 
+import repository.MemberRepository;
 import validate.InputException.NotInListRangeException;
 import validate.InputException.NotNumberException;
 
