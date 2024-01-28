@@ -11,19 +11,20 @@ public class TitleController {
     private static final ArrayList<Integer> NUMBER_OF_TITLE_SELECTION = new ArrayList<>(List.of(1, 2, 9));
     public void selectTitleMenu() {
         TitlePage titlePage = new TitlePage();
+        MemberController memberController = new MemberController();
 
         while (true) {
             try {
                 int input = titlePage.printTitle(NUMBER_OF_TITLE_SELECTION);
 
                 switch (input) {
-                    case 1:
-                        System.out.println("회원 서비스 구현 위치");
+                    case 1:     // 회원 페이지로 이동
+                        memberController.selectMemberMenu();
                         break;
-                    case 2:
+                    case 2:     // 게시판 페이지로 이동
                         System.out.println("게시판 서비스 구현 위치");
                         break;
-                    case 9:
+                    case 9:     // 프로그램 종료
                         System.out.println("프로그램을 종료합니다...");
                         return;
                 }
