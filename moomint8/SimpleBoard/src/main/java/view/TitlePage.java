@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class TitlePage {
 
-    /* 설명. 메인 페이지입니다. 선택된 값을 반환합니다. */
+    /* 설명. 메인 페이지입니다. 선택된 메뉴를 반환합니다. */
     public int printTitle(ArrayList<Integer> numberOfTitleSelection) throws NotNumberException, NotInListRangeException {
         Scanner sc = new Scanner(System.in);
         System.out.println("============== 게시판 프로그램 ==============");
