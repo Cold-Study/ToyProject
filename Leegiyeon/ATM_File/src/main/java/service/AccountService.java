@@ -41,14 +41,14 @@ public class AccountService {
     }
 
     public void selectWithdraw(int accountNo) {
-
+        // Memo. 출금 기능 구현 예정
     }
 
     public void selectBalance(int accountNo) {
-
+        // Memo. 잔액 조회 기능 구현 예정
     }
 
-    public void selectSignUp(Account account) {
+    public void signUp(Account account) {
         int lastAccountNo = ar.selectLastMemberNo();
         account.setAccountNo(lastAccountNo + 1);
 

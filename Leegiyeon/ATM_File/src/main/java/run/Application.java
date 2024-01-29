@@ -10,45 +10,106 @@ public class Application {
 
     public static void main(String[] args) {
 
+        int count = 0;
+
         while(true) {
+
+            // Memo. 관리자 인증 > ATM 전원 켜는 경우 하단 부분 Pass
+            if (count == 0) {
+                count++;
+                if (checkAdmin() == 0) {
+                    break;
+                }
+            }
+
             Scanner sc = new Scanner(System.in);
-            // Memo. 관리자 인증 및 사용자 설정 페이지 추가
+
             System.out.println("====    ATM    ====");
             System.out.println("==== 1.  입금   ====");
             System.out.println("==== 2.  출금   ====");
             System.out.println("==== 3. 잔액조회 ====");
-            // Memo. 관리자 메뉴 추가
-            System.out.println("==== 4. 회원가입 ====");
-            System.out.println("==== 9.  종료   ====");
-            System.out.print("이용하시고자 하는 서비스를 선택해 주세요: ");
+            System.out.println("==== 9. ADMIN  ====");
+            System.out.print("이용하실 서비스를 번호를 입력해주세요: ");
             int input = sc.nextInt();
-
-            // Memo. 흐름 수정할 것
-            int accountNo = accountServive.checkAccount();
-            if(accountNo == 0 || accountServive.login(accountNo)){
-                System.out.println("정보가 일치하지않아 메인 화면으로 이동합니다.");
-                continue;
-            }
 
             switch (input) {
                 case 1:
+                    int accountNo = accountServive.checkAccount();
+                    if(accountNo == 0 || accountServive.login(accountNo)){
+                        System.out.println("정보가 일치하지 않아 메인 화면으로 이동합니다.");
+                        continue;
+                    }
                     accountServive.Deposit(accountNo);
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
-                case 4:
-                    break;
                 case 9:
-                    System.out.println("프로그램을 종료합니다.");
-                    break;
+                    count = 0;
+                    continue;
                 default:
                     System.out.println("번호를 제대로 다시 입력해 주세요");
             }
         }
     }
 
+    // Memo. 관리자 인증
+    private static int checkAdmin() {
+        while (true) {
+            System.out.println("===== 관리자 로그인 =====");
+            System.out.print("관리자 비밀번호를 입력해주세요: ");
+            int masterPwd = 970516;
+
+            Scanner sc = new Scanner(System.in);
+            int input = sc.nextInt();
+
+            if (input == masterPwd) {
+                if (adminUI()) break;
+                else {
+                    System.out.println("ATM이 종료되었습니다.");
+                    return 0;
+                }
+            } else {
+                System.out.println("비밀번호가 틀렸습니다.");
+            }
+        }
+        return 1;
+    }
+
+    // Memo. 관리자 메뉴
+    private static boolean adminUI() {
+        boolean flag = true;
+
+        while (flag) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("==== 1. 계좌관리 ====");
+            System.out.println("==== 2. ATM실행 ====");
+            System.out.println("==== 3. ATM종료 ====");
+            System.out.print("관리할 서비스를 선택해 주세요: ");
+            int adminMenu = sc.nextInt();
+
+            if (adminMenu == 1) {
+                signUp();
+                flag = true;
+                continue;
+            } else if (adminMenu == 2) {
+                System.out.println("ATM을 실행합니다.");
+                flag =  true;
+            } else if (adminMenu == 3) {
+                System.out.println("ATM 전원을 끕니다.");
+                flag = false;
+            } else {
+                System.out.println("번호를 제대로 다시 입력해 주세요");
+                continue;
+            }
+            break;
+
+        }
+        return flag;
+    }
+
+    // Memo. 계좌 관리
     private static Account signUp() {
         Account newInfo = null;
 

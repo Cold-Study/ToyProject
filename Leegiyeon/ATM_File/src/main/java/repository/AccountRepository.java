@@ -158,9 +158,7 @@ public class AccountRepository {
                 break;
             }
         }
-
         accountList.add(new Account(accountNo,pwd,balance));
         saveAccounts(accountList);
-
     }
 }
