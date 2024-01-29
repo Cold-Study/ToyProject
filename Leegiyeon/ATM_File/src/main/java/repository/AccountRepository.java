@@ -150,10 +150,6 @@ public class AccountRepository {
         return 0;
     }
 
-    public void updateAccounts(ArrayList<Account> accountList) {
-        saveAccounts(accountList);
-    }
-
     public void deposit(int accountNo, int pwd, long balance) {
         for (Account account : accountList) {
             if (account.getAccountNo() == accountNo) {

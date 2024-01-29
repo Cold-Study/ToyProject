@@ -41,27 +41,14 @@ public class AccountService {
     }
 
     public void selectWithdraw(int accountNo) {
-        Account selectedMember = ar.selectAccount(accountNo);
 
-        if (selectedMember == null) {
-            System.out.println("그런 회원이 없네요!~");
-        } else {
-            System.out.println("조회된 회원은: " + selectedMember);
-        }
     }
 
     public void selectBalance(int accountNo) {
-        Account selectedMember = ar.selectAccount(accountNo);
 
-        if (selectedMember == null) {
-            System.out.println("그런 회원이 없네요!~");
-        } else {
-            System.out.println("조회된 회원은: " + selectedMember);
-        }
     }
 
     public void selectSignUp(Account account) {
-
         int lastAccountNo = ar.selectLastMemberNo();
         account.setAccountNo(lastAccountNo + 1);
 
