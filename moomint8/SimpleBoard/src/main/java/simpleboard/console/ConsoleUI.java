@@ -22,6 +22,7 @@ public class ConsoleUI {
         showTitleMenu();
     }
 
+    /* 설명. 타이틀 페이지 */
     private void showTitleMenu() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -51,6 +52,7 @@ public class ConsoleUI {
         }
     }
 
+    /* 설명. 회원 페이지 */
     private void showMemberMenu() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -91,6 +93,7 @@ public class ConsoleUI {
         }
     }
 
+    /* 설명. 모든 회원 정보 보기 */
     private void showAllMember() {
         ArrayList<MemberDTO> members = memberController.getAllMembers();
         System.out.println("\n-------- 전체 회원 조회 결과 --------");
