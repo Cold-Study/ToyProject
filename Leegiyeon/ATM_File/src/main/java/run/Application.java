@@ -23,6 +23,7 @@ public class Application {
             System.out.print("이용하시고자 하는 서비스를 선택해 주세요: ");
             int input = sc.nextInt();
 
+            // Memo. 흐름 수정할 것
             int accountNo = accountServive.checkAccount();
             if(accountNo == 0 || accountServive.login(accountNo)){
                 System.out.println("정보가 일치하지않아 메인 화면으로 이동합니다.");
