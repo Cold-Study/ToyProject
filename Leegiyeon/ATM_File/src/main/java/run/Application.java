@@ -10,13 +10,13 @@ public class Application {
 
     public static void main(String[] args) {
 
-        int count = 0;
+        int admin = 0;      // 관리자 페이지 이동 권한
 
         while(true) {
 
             // Memo. 관리자 인증 > ATM 전원 켜는 경우 하단 부분 Pass
-            if (count == 0) {
-                count++;
+            if (admin == 0) {
+                admin++;
                 if (checkAdmin() == 0) {
                     break;
                 }
@@ -24,12 +24,13 @@ public class Application {
 
             Scanner sc = new Scanner(System.in);
 
+            // Memo. 사용자 인터페이스
             System.out.println("====    ATM    ====");
             System.out.println("==== 1.  입금   ====");
             System.out.println("==== 2.  출금   ====");
             System.out.println("==== 3. 잔액조회 ====");
             System.out.println("==== 9. ADMIN  ====");
-            System.out.print("이용하실 서비스를 번호를 입력해주세요: ");
+            System.out.print("이용하실 서비스 번호를 입력해주세요: ");
             int input = sc.nextInt();
 
             switch (input) {
@@ -39,14 +40,26 @@ public class Application {
                         System.out.println("정보가 일치하지 않아 메인 화면으로 이동합니다.");
                         continue;
                     }
-                    accountServive.Deposit(accountNo);
+                    accountServive.deposit(accountNo);
                     break;
                 case 2:
+                    int accountNo1 = accountServive.checkAccount();
+                    if(accountNo1 == 0 || accountServive.login(accountNo1)){
+                        System.out.println("정보가 일치하지 않아 메인 화면으로 이동합니다.");
+                        continue;
+                    }
+                    accountServive.withdraw(accountNo1);
                     break;
                 case 3:
+                    int accountNo2 = accountServive.checkAccount();
+                    if(accountNo2 == 0 || accountServive.login(accountNo2)){
+                        System.out.println("정보가 일치하지 않아 메인 화면으로 이동합니다.");
+                        continue;
+                    }
+                    accountServive.balance(accountNo2);
                     break;
                 case 9:
-                    count = 0;
+                    admin = 0;
                     continue;
                 default:
                     System.out.println("번호를 제대로 다시 입력해 주세요");
@@ -90,6 +103,7 @@ public class Application {
             int adminMenu = sc.nextInt();
 
             if (adminMenu == 1) {
+                // Memo. 수정 예정
                 signUp();
                 flag = true;
                 continue;

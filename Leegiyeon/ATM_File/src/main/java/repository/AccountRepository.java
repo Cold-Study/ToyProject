@@ -23,7 +23,6 @@ public class AccountRepository {
 
             saveAccounts(accounts);
         }
-
         loadAccounts();
     }
 
@@ -40,6 +39,7 @@ public class AccountRepository {
             }
 
             oos.flush();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -117,6 +117,7 @@ public class AccountRepository {
             accountList.add(account);
 
             moo.flush();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
@@ -150,11 +151,10 @@ public class AccountRepository {
         return 0;
     }
 
-    public void deposit(int accountNo, int pwd, long balance) {
+    public void accountUpdate(int accountNo, int pwd, long balance) {
         for (Account account : accountList) {
             if (account.getAccountNo() == accountNo) {
                 deleteAccount(accountNo);
-
                 break;
             }
         }

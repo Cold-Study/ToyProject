@@ -9,14 +9,15 @@ import java.util.Scanner;
 public class AccountService {
 
     public int password;
+
     public AccountService() {
     }
 
     ArrayList<Account> accountlist = new ArrayList<>();
     private final AccountRepository ar = new AccountRepository();
 
-    public void Deposit(int accountNo) {
-        if(accountlist.isEmpty()) accountlist = ar.allAccounts();
+    public void deposit(int accountNo) {
+        if (accountlist.isEmpty()) accountlist = ar.allAccounts();
 
         long balance = ar.balance(accountNo); // 해당 계좌의 잔액 조회
         Scanner sc = new Scanner(System.in);
@@ -34,20 +35,44 @@ public class AccountService {
                 System.out.println(deposit + "원 입금해주셨습니다.");
                 System.out.println("고객님 계좌의 잔액은 " + balance + "원 입니다.");
 
-                ar.deposit(accountNo, password, balance);
+                ar.accountUpdate(accountNo, password, balance);     // 새로운 객체에 입금내용 추가
                 break;
             }
         }
     }
 
-    public void selectWithdraw(int accountNo) {
-        // Memo. 출금 기능 구현 예정
+    public void withdraw(int accountNo) {
+        if (accountlist.isEmpty()) accountlist = ar.allAccounts();
+
+        long balance = ar.balance(accountNo); // 해당 계좌의 잔액 조회
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("출금하실 금액을 입력해주세요: ");
+            long withdraw = sc.nextLong();
+
+            System.out.println("withdraw : " + withdraw);
+            if (withdraw > balance) {
+                System.out.println("계좌의 잔액이 부족합니다.");
+            } else {
+                balance -= withdraw;
+                System.out.println(withdraw + "원 출금하셨습니다.");
+                System.out.println("고객님 계좌의 잔액은 " + balance + "원 입니다.");
+
+                ar.accountUpdate(accountNo, password, balance);     // 새로운 객체에 출금내용 추가
+                break;
+            }
+        }
     }
 
-    public void selectBalance(int accountNo) {
-        // Memo. 잔액 조회 기능 구현 예정
+    public void balance(int accountNo) {
+        if (accountlist.isEmpty()) accountlist = ar.allAccounts();
+
+        long balance = ar.balance(accountNo); // 해당 계좌의 잔액 조회
+        System.out.println("고객님의 \'" + accountNo + "\'계좌의 잔액은 " + balance + "원 입니다.");
     }
 
+    // Memo. 관리자 계좌관리 메소드 수정 예정
     public void signUp(Account account) {
         int lastAccountNo = ar.selectLastMemberNo();
         account.setAccountNo(lastAccountNo + 1);
@@ -89,7 +114,7 @@ public class AccountService {
         System.out.print("비밀번호를 입력해주세요: ");
         int pwd = sc.nextInt();
 
-        Account checkAccount = ar.checkAccount(accountNo,pwd);
+        Account checkAccount = ar.checkAccount(accountNo, pwd);
 
         if (checkAccount == null) {
             System.out.println("입력하신 비밀번호가 틀렸습니다.");
