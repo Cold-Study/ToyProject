@@ -1,6 +1,6 @@
-package validate;
+package OldVersion.validate;
 
-import validate.InputException.NotNumberException;
+import OldVersion.validate.InputException.NotNumberException;
 
 public class ValidateInputType {
 

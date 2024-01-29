@@ -1,8 +1,8 @@
-package controller;
+package OldVersion.controller;
 
-import repository.MemberRepository;
-import service.MemberService;
-import view.MemberPage;
+import OldVersion.repository.MemberRepository;
+import OldVersion.service.MemberService;
+import OldVersion.view.MemberPage;
 
 import java.util.ArrayList;
 import java.util.List;

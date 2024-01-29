@@ -1,7 +1,7 @@
-package repository;
+package OldVersion.repository;
 
-import model.Member;
-import stream.MyObjectOutput;
+import OldVersion.model.Member;
+import OldVersion.stream.MyObjectOutput;
 
 import java.io.*;
 import java.util.ArrayList;

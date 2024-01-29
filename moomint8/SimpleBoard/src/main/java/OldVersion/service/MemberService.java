@@ -1,13 +1,15 @@
-package service;
+package OldVersion.service;
 
-import model.Member;
-import repository.MemberRepository;
+import OldVersion.model.Member;
+import OldVersion.repository.MemberRepository;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberService {
+//    private final MemberRepository memberRepository;
     public MemberService() {
+//        memberRepository = new MemberRepository();
     }
 
     /* 설명. 모든 회원 조회 메소드 */

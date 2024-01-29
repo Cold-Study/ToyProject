@@ -1,8 +1,8 @@
-package view;
+package OldVersion.view;
 
-import validate.InputException.NotInListRangeException;
-import validate.InputException.NotNumberException;
-import validate.Validate;
+import OldVersion.validate.InputException.NotInListRangeException;
+import OldVersion.validate.InputException.NotNumberException;
+import OldVersion.validate.Validate;
 
 import java.util.ArrayList;
 import java.util.Scanner;

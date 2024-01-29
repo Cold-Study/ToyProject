@@ -1,4 +1,4 @@
-package model;
+package OldVersion.model;
 
 import java.io.Serializable;
 
@@ -36,6 +36,10 @@ public class Member implements Serializable {
 
     public boolean isDeleted() {
         return isDeleted;
+    }
+
+    public String getPwd() {
+        return pwd;
     }
 
     @Override
