@@ -103,8 +103,7 @@ public class Application {
             int adminMenu = sc.nextInt();
 
             if (adminMenu == 1) {
-                // Memo. 수정 예정
-                signUp();
+                accountServive.signUp();
                 flag = true;
                 continue;
             } else if (adminMenu == 2) {
@@ -124,22 +123,5 @@ public class Application {
     }
 
     // Memo. 계좌 관리
-    private static Account signUp() {
-        Account newInfo = null;
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("계좌번호를 입력하세요: ");
-        int accountNo = sc.nextInt();
-
-        System.out.print("패스워드를 입력하세요: ");
-        int pwd = sc.nextInt();
-
-        System.out.print("최초 입금 금액을 입력하세요: ");
-        int balance = sc.nextInt();
-
-        newInfo = new Account(accountNo, pwd, balance);
-
-        return newInfo;
-    }
 }
