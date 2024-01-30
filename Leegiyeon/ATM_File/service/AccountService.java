@@ -120,7 +120,6 @@ public class AccountService {
             System.out.println("입력하신 비밀번호가 틀렸습니다.");
             return true;
         } else {
-            System.out.println("조회된 비밀번호는는: " + pwd);
             password = pwd;
             return false;
         }

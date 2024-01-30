@@ -12,7 +12,7 @@ public class AccountRepository {
 
     public AccountRepository() {
 
-        File file = new File("src/main/java/db/ATMDB.dat");
+        File file = new File("Leegiyeon/ATM_File/DB/ATMDB.dat");
         if (!file.exists()) {
             ArrayList<Account> accounts = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class AccountRepository {
         try {
             oos = new ObjectOutputStream(
                     new BufferedOutputStream(
-                            new FileOutputStream("src/main/java/db/ATMDB.dat")));
+                            new FileOutputStream("Leegiyeon/ATM_File/DB/ATMDB.dat")));
 
             for (Account account : accounts) {
                 oos.writeObject(account);
@@ -56,7 +56,7 @@ public class AccountRepository {
         try {
             ois = new ObjectInputStream(
                     new BufferedInputStream(
-                            new FileInputStream("src/main/java/db/ATMDB.dat")));
+                            new FileInputStream("Leegiyeon/ATM_File/DB/ATMDB.dat")));
 
             while (true) {
                 accountList.add((Account) (ois.readObject()));
@@ -110,7 +110,7 @@ public class AccountRepository {
         try {
             moo = new MyObjectOutput(
                     new BufferedOutputStream(
-                            new FileOutputStream("src/main/java/db/ATMDB.dat", true)));
+                            new FileOutputStream("Leegiyeon/ATM_File/DB/ATMDB.dat", true)));
 
             moo.writeObject(account);
 
