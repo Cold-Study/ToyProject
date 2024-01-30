@@ -121,7 +121,4 @@ public class Application {
         }
         return flag;
     }
-
-    // Memo. 계좌 관리
-
 }
