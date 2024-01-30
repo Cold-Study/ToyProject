@@ -1,11 +1,9 @@
-package ATM;
+package DTO;
 
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
 
-public class Member {
+public class MemberDTO {
     private int id;
 
     public int getId() {
@@ -20,12 +18,12 @@ public class Member {
     private String name;
     private String pwd;
     private double balance;
-    Member[] members = new Member[6];
+    MemberDTO[] memberDTOS = new MemberDTO[6];
 
-    public Member() {
+    public MemberDTO() {
     }
 
-    public Member(int id, int accountNumber, String name, String pwd, double balance) {
+    public MemberDTO(int id, int accountNumber, String name, String pwd, double balance) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.name = name;
@@ -34,7 +32,7 @@ public class Member {
     }
 
     public double getBalance() {
-        System.out.println("고객님 계좌의 잔액은" + members[id].balance + "원 입니다.");
+        System.out.println("고객님 계좌의 잔액은" + memberDTOS[id].balance + "원 입니다.");
         System.out.println("서비스를 이용해주셔서 감사합니다.");
         return balance;
     }
@@ -58,13 +56,13 @@ public class Member {
         System.out.print("계좌번호를 입력해주세요: ");
         accountNumber = sc.nextInt();
 
-        for (int i = 0; i < members.length; i++) {
-            if (accountNumber == members[i].accountNumber) {
+        for (int i = 0; i < memberDTOS.length; i++) {
+            if (accountNumber == memberDTOS[i].accountNumber) {
                 id = i;
                 System.out.print("비밀번호를 입력해주세요: ");
                 pwd = sc.next();
 
-                if (Objects.equals(pwd, members[id].pwd)) {         // Memo. pwd == members[id].pwd 는 적용이 안됨
+                if (Objects.equals(pwd, memberDTOS[id].pwd)) {         // Memo. pwd == members[id].pwd 는 적용이 안됨
                     login = true;
                     System.out.println("로그인 되었습니다.");
                     break;
@@ -80,23 +78,23 @@ public class Member {
 
     // 기존 가입된 회원
     public void memberManager() {
-        members[0] = new Member(0, 1111, "Grace", "abcd1234", 5320000.0);
-        members[1] = new Member(1, 5555, "Julia", "abcd5678", 8320000.0);
-        members[2] = new Member(2, 6666, "Tom", "abcd8765", 49920000.0);
-        members[3] = new Member(3, 4444, "Wendy", "abcd1234", 4320000.0);
-        members[4] = new Member(4, 2222, "John", "qwer1234", 41150000.0);
-        members[5] = new Member(5, 3333, "Suzy", "qwer4321", 60000000.0);
+        memberDTOS[0] = new MemberDTO(0, 1111, "Grace", "abcd1234", 5320000.0);
+        memberDTOS[1] = new MemberDTO(1, 5555, "Julia", "abcd5678", 8320000.0);
+        memberDTOS[2] = new MemberDTO(2, 6666, "Tom", "abcd8765", 49920000.0);
+        memberDTOS[3] = new MemberDTO(3, 4444, "Wendy", "abcd1234", 4320000.0);
+        memberDTOS[4] = new MemberDTO(4, 2222, "John", "qwer1234", 41150000.0);
+        memberDTOS[5] = new MemberDTO(5, 3333, "Suzy", "qwer4321", 60000000.0);
     }
 
     public void deposit() {
-        balance = members[id].balance;
+        balance = memberDTOS[id].balance;
         System.out.print("입금할 금액을 입력해주세요: ");
         Scanner sc = new Scanner(System.in);
         double deposit = sc.nextDouble();
 
         if (deposit > 0) {
             balance += deposit;
-            members[id].balance = balance;
+            memberDTOS[id].balance = balance;
             System.out.println("입금 후 잔액은 " + balance + "원 입니다.");
             System.out.println("서비스를 이용해주셔서 감사합니다.");
         } else {
@@ -107,14 +105,14 @@ public class Member {
 
 
     public void withdraw() {
-        balance = members[id].balance;
+        balance = memberDTOS[id].balance;
         System.out.print("출금할 금액을 입력해주세요: ");
         Scanner sc = new Scanner(System.in);
         double withdraw = sc.nextDouble();
 
         if (balance >= withdraw) {
             balance -= withdraw;
-            members[id].balance = balance;
+            memberDTOS[id].balance = balance;
             System.out.println("출금 후 잔액은 " + balance + "원 입니다.");
             System.out.println("서비스를 이용해주셔서 감사합니다.");
         } else {

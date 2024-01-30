@@ -1,4 +1,6 @@
-package ATM;
+package run;
+
+import DTO.MemberDTO;
 
 import java.util.Scanner;
 
@@ -10,8 +12,8 @@ public class AtmUI {
         boolean isOn = true;    // ATM 실행
         boolean pass = false;   // 로그인 확인
         
-        Member member = new Member();
-        member.memberManager(); // 기존 가입 member load
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.memberManager(); // 기존 가입 member load
 
         while (isOn) {
             System.out.println("====    ATM    ====");
@@ -24,16 +26,16 @@ public class AtmUI {
             int input = sc.nextInt();
             
             if (input == 1) {
-                if (member.login(pass)) {
-                    member.deposit();
+                if (memberDTO.login(pass)) {
+                    memberDTO.deposit();
                 }
             } else if (input == 2) {
-                if (member.login(pass)) {
-                    member.withdraw();
+                if (memberDTO.login(pass)) {
+                    memberDTO.withdraw();
                 }
             } else if (input == 3) {
-                if (member.login(pass)) {
-                    member.getBalance();
+                if (memberDTO.login(pass)) {
+                    memberDTO.getBalance();
                 }
             } else if (input == 9) {
                 System.out.println("ATM이 종료됩니다.");
